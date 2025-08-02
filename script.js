@@ -119,7 +119,7 @@ async function playmusic(i, p = false) {
 
 async function playmusic2(i, p = false) {
     if (p == true) {
-        i = "/NEW SONGS/" + i+"128 Kbps"+".mp3"
+        i = "/NEW SONGS/" + i + "128 Kbps" + ".mp3"
         currents.src = i;
         currents.pause()
         let q = document.getElementsByClassName("musicdurationinfo")[0];
@@ -157,7 +157,7 @@ async function playmusic2(i, p = false) {
 
     }
     else {
-        i = "/NEW SONGS/" + i+"128 Kbps"+".mp3"
+        i = "/NEW SONGS/" + i + "128 Kbps" + ".mp3"
         // i=i.replace(" ","%20")
         console.log(i)
         currents.src = i;
@@ -310,7 +310,7 @@ async function main(params) {
 
     let arr = await getsongs();
     let u = await set();
-    console.log(u[5].replace("MUSIC%20ICON","NEW%20SONGS").replace("jpg","mp3"))
+    console.log(u[5].replace("MUSIC%20ICON", "NEW%20SONGS").replace("jpg", "mp3"))
     console.log(currents.src)
 
     let aa = document.getElementsByClassName("backward")[0]
@@ -340,7 +340,7 @@ async function main(params) {
 
         for (let index = 0; index < u.length; index++) {
             const element = u[index];
-            if (element.replace("MUSIC%20ICON","NEW%20SONGS").replace("jpg","mp3")==currents.src) {
+            if (element.replace("MUSIC ICON", "NEW%20SONGS").replace("jpg", "mp3") == currents.src.split("3000")[1]) {
                 if (index - 1 >= 0) {
                     playmusic2(u[index - 1].split("ICON/")[1].replaceAll("%20", " ").replaceAll(".jpg", "").replaceAll("128 Kbps", ""))
 
@@ -363,10 +363,12 @@ async function main(params) {
     let bb = document.getElementsByClassName("forward")[0]
     console.log(bb)
     bb.addEventListener("click", () => {
+        http://192.168.51.76:3000/NEW%20SONGS/Dil%20Chori%20128%20Kbps.mp3
 
         for (let index = 0; index < arr.length; index++) {
             const element = arr[index];
-            if (element == currents.src.split("/SONGS/")[1].replaceAll("%20", " ")) {
+
+            if (element == currents.src.split("SONGS/")[1].replaceAll("%20", " ")) {
                 if (index >= 0 && index + 1 < arr.length) {
 
                     playmusic(arr[index + 1])
@@ -381,13 +383,21 @@ async function main(params) {
         }
 
     })
-    
+
     bb.addEventListener("click", () => {
 
         for (let index = 0; index < u.length; index++) {
             const element = u[index];
-            if (element.replace("MUSIC%20ICON","NEW%20SONGS").replace("jpg","mp3")==currents.src) {
+
+            console.log(element.replace("MUSIC ICON", "NEW%20SONGS").replace("jpg", "mp3"))
+            console.log(currents.src.split("3000")[1])
+
+            if (element.replace("MUSIC ICON", "NEW%20SONGS").replace("jpg", "mp3") == currents.src.split("3000")[1]) {
+                console.log("uhfie544shfis")
                 if (index >= 0 && index + 1 < u.length) {
+                    console.log("uhfieshfis")
+                    console.log(u[index + 1].split("ICON/")[1].replaceAll("%20", " ").replaceAll(".jpg", "").replaceAll("128 Kbps", ""))
+
 
                     playmusic2(u[index + 1].split("ICON/")[1].replaceAll("%20", " ").replaceAll(".jpg", "").replaceAll("128 Kbps", ""))
 
@@ -403,7 +413,7 @@ async function main(params) {
     })
 
 
-    
+
     console.log(u)
     //  let uu=document.getElementsByClassName("boxx")[0];
     //  console.log(uu)
